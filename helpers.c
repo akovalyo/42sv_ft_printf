@@ -6,11 +6,18 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:36:45 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/04/03 12:35:54 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/04/30 13:46:15 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+void	putchar_count(t_printf *flags, char c)
+{
+	putchar_count(format[flags->i]);
+	flags->count++;
+}
+
 
 int		hex_ascii(size_t n, int letter)
 {
@@ -22,7 +29,7 @@ int		hex_ascii(size_t n, int letter)
 		return (n + 55);
 }
 
-char	*conv_base(int nbr, int base, int letter)
+char	*conv_base(unsigned int nbr, unsigned int base, int letter)
 {
 	char 	ch;
 	char 	*str;
@@ -42,6 +49,17 @@ char	*conv_base_uns(size_t nbr, int base, char letter)
 		str = conv_base_uns(nbr / base, base, letter);
 	ch = hex_ascii(nbr % base, letter);
 	return(ft_straddchr(str, ch));
+}
+
+void init_flags(t_print *flags)
+{
+	flags->specif = "diuscpxX%";
+	flags->i = 0;
+	flags->count = 0;
+	flags->zero = 0;
+	flags->minus = 0;
+	flags->width = 0;
+	flags->width_val = 0;
 }
 
 void	init_flags(t_flag *flags, int i)

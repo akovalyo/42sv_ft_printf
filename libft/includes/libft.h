@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/01 18:00:42 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/04/03 11:20:39 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/04/30 10:22:01 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,6 @@ char			*ft_straddchr_free(char *str, char ch);
 char 			*signific_handler(long double nbr, int precis, int *increment);
 char   			*ft_ftoa_long(long double nbr, int precis);
 char   			*ft_ftoa(double nbr, int precis);
+int				*ft_strchr_ind(const char *s, int c);
 
 #endif

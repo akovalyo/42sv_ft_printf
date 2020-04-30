@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/04/03 12:34:04 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/04/30 13:46:16 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,22 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "libft.h"
+
+typedef struct		s_printf
+{
+	const char		*specif;
+	int 			sp : 4;
+	int				i;
+	int				count;
+	int				zero : 1;
+	int				minus : 1;
+	int				width : 1;
+	int				width_val;
+
+
+}					t_printf;
+
+typedef void		conv(t_print *flags, va_list *ap);
 
 typedef struct 		s_flag
 {
@@ -63,6 +79,7 @@ typedef struct 		s_output
 ** get.c
 */
 
+void 				take_sign(t_flag *flags, t_output *print);
 void				get_diu(t_flag *flags, va_list *ap, t_output *print);
 void				get_sc(t_flag *flags, va_list *ap, t_output *print);
 void				get_xo(t_flag *flags, va_list *ap, t_output *print);
@@ -83,7 +100,7 @@ void				analyse_precis(t_flag *flags, t_output *print);
 */
 
 int					hex_ascii(size_t n, int letter);
-char				*conv_base(int nbr, int base, int letter);
+char				*conv_base(unsigned int nbr, unsigned int base, int letter);
 char				*conv_base_uns(size_t nbr, int base, char letter);
 void				init_flags(t_flag *flags, int i);
 void				init_output(t_output *print);
@@ -93,7 +110,7 @@ void				init_output(t_output *print);
 */
 
 void  				print_pre_post(char ch, int len, t_output *print);
-void    			print_oxp(t_output *print);
+void    			print_oxp(t_flag *flags, t_output *print);
 void    			print_output(t_flag *flags, t_output *print);
 void				edit_output(t_flag *flags, t_output *print);
 

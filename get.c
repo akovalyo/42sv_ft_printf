@@ -6,11 +6,23 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 18:07:45 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/04/03 13:13:48 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/04/06 13:58:21 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+void take_sign(t_flag *flags, t_output *print)
+{
+	char *tmp;
+
+	tmp = print->body;
+	print->body = ft_strdup(&tmp[1]);
+	ft_strdel(&tmp);
+	print->spplus = '-';
+	print->x_correct++;
+	(flags->width) ? print->count : print->count++;
+}
 
 void	get_diu(t_flag *flags, va_list *ap, t_output *print)
 {
@@ -24,6 +36,8 @@ void	get_diu(t_flag *flags, va_list *ap, t_output *print)
 			print->body = ft_itoa_long(va_arg(*ap, long));
 		else
 			print->body = ft_itoa(va_arg(*ap, int));
+		if (print->body[0] == '-')
+			take_sign(flags, print);
 	}
 	else if (flags->specf == 'u')
 	{
@@ -86,7 +100,7 @@ void	get_xo(t_flag *flags, va_list *ap, t_output *print)
 	if (flags->len == 'j' || flags->l_flag)
 		print->body = conv_base_uns(va_arg(*ap, size_t), 16, letter);
 	else
-		print->body = conv_base_uns(va_arg(*ap, int), 16, letter);
+		print->body = conv_base(va_arg(*ap, int), 16, letter);
 	if (print->body[0] == '0')
 		flags->xo = 0;
 }

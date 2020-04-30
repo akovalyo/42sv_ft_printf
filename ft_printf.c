@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 10:40:44 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/04/03 13:15:40 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/04/30 13:29:59 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,28 @@ void	create_output(t_flag *flags, va_list *ap, t_output *print)
 
 int 	ft_printf(const char *format, ...)
 {
-	va_list 	ap;
-	t_output 	print;
-	t_flag 		flags;
-
-	init_output(&print);
+	va_list	ap;
+	t_list	flags;
+	conv	*fn_array[] = {conv_di, conv_di, conv_s, conv_c}
+	
+	init_output(&flags);
 	va_start(ap, format);
-	while (format[print.i])
+	while (format[flags.i])
 	{
-		if (format[print.i] != '%')
+		if (format[flags.i] != '%')
 		{
-			ft_putchar(format[print.i]);
-			print.i++;
-			print.count++;
+			putchar_count(&flags, format);
+			flags.i++;
 		}
 		else
 		{
-			print.i++;
-			if (format_checker(&flags, format, &print))	
-				create_output(&flags, &ap, &print);
+			flags.i++;
+			format_checker(&flags, format, ap);	
+			if (specifier_checker(&flags, format))
+				(*fn_array[flags.sp])(&flags, ap)
 		}
-	}
 	va_end(ap);
-	return (print.count);
+	return(flags.count)
 }
 
 int main()
@@ -67,8 +66,8 @@ int main()
 	char ch;
 	char c = 'c';
 	char *str;
-	i = ft_printf("%d%\n", 5);
-	d = printf("%d%\n", 5);
+	//i = ft_printf("%0+-8.3d\n", -8473);
+	d = printf("%0+-8.3d\n", -8473);
 	ft_printf("%i - %i\n", i, d);
 	return (0);
 }

@@ -6,38 +6,31 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:50:01 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/04/03 13:15:49 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/04/30 13:58:13 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	format_checker(t_flag *flags, const char *str, t_output *print)
+void	format_checker(t_printf *flags, const char *str, va_list ap)
 {
-	init_flags(flags, print->i);
-	while (flag_checker(flags, str, print))
-		print->i++;
-	width_checker(flags, str, print);
-    if (str[print->i] == '.' && !(precis_checker(flags, str, print)))
-		return (0);
-	while (length_checker(flags, str, print))
-        print->i++;
-	if (specifier_checker(flags, str, print))
+	while (str[flags->i] && (str[flags->i] == '-' || str[flags->i] == '*' ||
+			(str[flags->i] >= '0' || str[flags->i] <= '9') || str[flags->i] = '.'))
 	{
-		print->i++;
-		return (1);
+		if (str[flags->i] == '-' || (str[flags->i] == '0' && str[flags->i - 1] == '%')
+			analyse_flags(flags, str);
+		if (str[flags->i] == '*')
+			analyse_asterisk(flags, str, ap);
+		if (str[flags->i] >= '1' && str[flags->i] <= '9')
+			analyse_width(flags, str);
+		if (str[flags->i] == '.')
+			analyse_precis(flags, str);
+
+		
 	}
-	while (flags->start <= print->i)
-	{
-		ft_putchar(str[flags->start]);
-		(flags->start)++;
-		print->count++;
-	}
-	print->i++;
-	return (0);
 }
 
-int	length_checker(t_flag *flags, const char *str, t_output *print)
+int	length_checker(t_flag *flags, const char *str)
 {
 	if (str[print->i] == 'j')
 		flags->len = str[print->i];
@@ -54,7 +47,7 @@ int	length_checker(t_flag *flags, const char *str, t_output *print)
 	return (1);
 }
 
-int	flag_checker(t_flag *flags, const char *str, t_output *print)
+int	flag_checker(t_flag *flags, const char *str)
 {
 	
 		if (str[print->i] == '-')
@@ -72,7 +65,7 @@ int	flag_checker(t_flag *flags, const char *str, t_output *print)
 	return (1);
 }
 
-void	width_checker(t_flag *flags, const char *str, t_output *print)
+void	width_checker(t_flag *flags, const char *str)
 {
 	int width;
 
@@ -84,7 +77,7 @@ void	width_checker(t_flag *flags, const char *str, t_output *print)
 	}
 }
 
-int 	precis_checker(t_flag *flags, const char *str, t_output *print)
+int 	precis_checker(t_flag *flags, const char *str)
 {
 	int len;
 
@@ -98,6 +91,7 @@ int 	precis_checker(t_flag *flags, const char *str, t_output *print)
 			return (0);
 		}
 		flags->zero = 0;
+		flags->precis = 0;
 		return (1);
 	}
 	len = ft_atoi(&str[print->i]);
@@ -106,14 +100,9 @@ int 	precis_checker(t_flag *flags, const char *str, t_output *print)
 	return (1);
 }
 
-int	specifier_checker(t_flag *flags, const char *str, t_output *print)
+int	specifier_checker(t_flag *flags, const char *str)
 {
-	char 	specif[13];
-
-	ft_bzero(specif, 13);
-	ft_strcpy(specif, "diucspxXofF%"); 
-	if (!ft_strchr(specif, str[print->i]))
+	if ((flags->sp = ft_strchr_ind(flags->specif, str[print->i]) == -1)
 		return (0);
-	flags->specf = str[print->i];
  	return (1);
 }

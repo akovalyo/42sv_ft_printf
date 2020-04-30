@@ -6,7 +6,7 @@
 #    By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/01 21:26:34 by akovalyo          #+#    #+#              #
-#    Updated: 2020/04/03 11:20:56 by akovalyo         ###   ########.fr        #
+#    Updated: 2020/04/30 10:22:18 by akovalyo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,8 @@ SRC = ft_memset.c \
 	  ft_straddchr.c \
 	  ft_straddchr_free.c \
 	  ft_ftoa_long.c \
-	  ft_ftoa.c
+	  ft_ftoa.c \
+	  ft_strchr_ind.c
 
 OF = $(SRC:%.c=%.o)
 

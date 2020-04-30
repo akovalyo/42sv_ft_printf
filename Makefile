@@ -6,7 +6,7 @@
 #    By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/01 21:26:34 by akovalyo          #+#    #+#              #
-#    Updated: 2020/04/03 12:47:40 by akovalyo         ###   ########.fr        #
+#    Updated: 2020/04/05 11:46:51 by akovalyo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,5 +41,16 @@ re: fclean all
 
 test:
 	@gcc -g -o test $(SRC) -L ./libft -lft -I ./libft/includes
+	@./test
+	@rm test
+	
+memory:
+	@gcc -g -o test $(SRC) -L ./libft -lft -I ./libft/includes
+	@valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./test
+	@rm test
+
+debug:
+	@gcc -g -o test $(SRC) -L ./libft -lft -I ./libft/includes
+
 norm:
 	@norminette -R CheckForbiddenSourceHeader $(SRC) libft.h
