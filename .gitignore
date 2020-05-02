@@ -1,4 +1,7 @@
-test*
+test
+test.cc
+
+test_M
 .DS_Store
 ._*
 .*.swp
@@ -7,5 +10,4 @@ test*
 .vscode
 backup
 libft/Mpft/
-pft
 a.out

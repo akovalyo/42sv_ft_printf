@@ -13,9 +13,8 @@
 NAME=libftprintf.a
 FLAGS=-Wall -Wextra -Werror -c
 SRC=ft_printf.c \
-		get.c \
+		get_c.c \
 		checker.c \
-		print.c \
 		analyse.c \
 		helpers.c
 
