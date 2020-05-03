@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/01 12:46:05 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/02 12:07:08 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,17 @@ typedef struct		s_printf
 {
 	const char		*specif;
 	unsigned int 	sp : 4;
-	int				i;
-	int				count;
+	unsigned int	i;
+	unsigned int	count;
 	unsigned int	zero : 1;
 	unsigned int	minus : 1;
 	unsigned int	width : 1;
-	int				width_val;
+	unsigned int	width_val;
 	unsigned int	precis : 1;
-	int				precis_val;
+	unsigned int	precis_val;
 	unsigned int	precis_minus : 1;
+	unsigned int	s_len;
+	unsigned int	print_precis : 1;
 }					t_printf;
 
 typedef void		conv(t_printf *flags, va_list *ap);
@@ -45,6 +47,12 @@ int 				precis_c(t_printf *flags, char ch);
 void    			get_di(t_printf *flags, va_list *ap);
 void    			get_s(t_printf *flags, va_list *ap);
 void    			get_px(t_printf *flags, va_list *ap);
+
+void 				print_width(t_printf *flags, char fill);
+void 				width_s(t_printf *flags, char *str);
+void 				zero_minus_s(t_printf *flags, char *str);
+void 				print_precis_s(t_printf *flags);
+void 				get_s(t_printf *flags, va_list *ap);
 
 /*
 ** analyse.c
@@ -62,6 +70,7 @@ void    			asterisk_precis(t_printf *flags, va_list *ap);
 */
 
 void				putchar_count(t_printf *flags, char c);
+void				putstr_count(t_printf *flags, char *str);
 int					hex_ascii(size_t n, int letter);
 char				*conv_base(unsigned int nbr, unsigned int base, int letter);
 char				*conv_base_uns(size_t nbr, int base, char letter);

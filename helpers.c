@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:36:45 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/01 13:18:17 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/02 11:36:26 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,22 @@ void	putchar_count(t_printf *flags, char ch)
 {
 	ft_putchar(ch);
 	flags->count++;
+}
+
+void	putstr_count(t_printf *flags, char *str)
+{
+	int i;
+
+	i = 0;
+	if (str)
+	{
+		while (str[i])
+		{
+			putchar_count(flags, str[i]);
+			i++;
+		}
+	}
+	
 }
 
 
@@ -54,7 +70,7 @@ char	*conv_base_uns(size_t nbr, int base, char letter)
 void init_flags(t_printf *flags)
 {
 	flags->specif = "diuscpxX%";
-	flags->sp = -1;
+	flags->sp = 10;
 	flags->i = 0;
 	flags->count = 0;
 	flags->zero = 0;
@@ -64,6 +80,8 @@ void init_flags(t_printf *flags)
 	flags->precis = 0;
 	flags->precis_val = 0;
 	flags->precis_minus = 0;
+	flags->s_len = 0;
+	flags->print_precis = 0;
 }
 
 void clear_flags(t_printf *flags)
@@ -76,4 +94,6 @@ void clear_flags(t_printf *flags)
 	flags->precis = 0;
 	flags->precis_val = 0;
 	flags->precis_minus = 0;
+	flags->s_len = 0;
+	flags->print_precis = 0;
 }

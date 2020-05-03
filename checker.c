@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:50:01 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/01 13:11:29 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/02 09:52:50 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	format_checker(t_printf *flags, const char *str, va_list *ap)
 
 int	specifier_checker(t_printf *flags, const char *str)
 {
-	if ((flags->sp = ft_strchr_ind(flags->specif, str[flags->i])) == -1)
+	if ((flags->sp = ft_strchr_ind(flags->specif, str[flags->i])) == 10)
 		return (0);
  	return (1);
 }

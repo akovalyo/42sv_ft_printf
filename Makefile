@@ -6,7 +6,7 @@
 #    By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/01 21:26:34 by akovalyo          #+#    #+#              #
-#    Updated: 2020/04/05 11:46:51 by akovalyo         ###   ########.fr        #
+#    Updated: 2020/05/02 12:05:09 by akovalyo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME=libftprintf.a
 FLAGS=-Wall -Wextra -Werror -c
 SRC=ft_printf.c \
 		get_c.c \
+		get_s.c \
 		checker.c \
 		analyse.c \
 		helpers.c
