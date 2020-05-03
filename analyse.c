@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 18:11:08 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/01 11:30:21 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/03 13:21:26 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void    analyse_precis(t_printf *flags, const char *str)
         flags->i++;
     }
     len = ft_atoi(&str[flags->i]);
-    flags->i += ft_nbrlen(len);
+    if (str[flags->i] >= '0' && str[flags->i] <= '9') 
+        flags->i += ft_nbrlen(len);
     flags->precis_val = len;
 }
 

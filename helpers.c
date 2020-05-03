@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:36:45 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/02 11:36:26 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/03 13:34:28 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,18 @@ char	*conv_base_uns(size_t nbr, int base, char letter)
 	return(ft_straddchr(str, ch));
 }
 
+char	*strdup_printf(const char *s)
+{
+	char *d;
+	
+	if (!s)
+		return (ft_strdup("(null)"));
+	if (!(d = (char *)malloc(sizeof(char) * ft_strlen(s) + 1)));
+		return (NULL);
+	ft_strcpy(d, s);
+	return (d);
+}
+
 void init_flags(t_printf *flags)
 {
 	flags->specif = "diuscpxX%";
@@ -82,6 +94,7 @@ void init_flags(t_printf *flags)
 	flags->precis_minus = 0;
 	flags->s_len = 0;
 	flags->print_precis = 0;
+	flags->stop = 0;
 }
 
 void clear_flags(t_printf *flags)
@@ -96,4 +109,5 @@ void clear_flags(t_printf *flags)
 	flags->precis_minus = 0;
 	flags->s_len = 0;
 	flags->print_precis = 0;
+	flags->stop = 0;
 }

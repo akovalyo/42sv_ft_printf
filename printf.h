@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/02 12:07:08 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/03 13:33:37 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ typedef struct		s_printf
 	unsigned int	zero : 1;
 	unsigned int	minus : 1;
 	unsigned int	width : 1;
-	unsigned int	width_val;
+	int				width_val;
 	unsigned int	precis : 1;
-	unsigned int	precis_val;
+	int				precis_val;
 	unsigned int	precis_minus : 1;
 	unsigned int	s_len;
 	unsigned int	print_precis : 1;
+	unsigned int	stop : 1;
 }					t_printf;
 
 typedef void		conv(t_printf *flags, va_list *ap);
@@ -51,7 +52,8 @@ void    			get_px(t_printf *flags, va_list *ap);
 void 				print_width(t_printf *flags, char fill);
 void 				width_s(t_printf *flags, char *str);
 void 				zero_minus_s(t_printf *flags, char *str);
-void 				print_precis_s(t_printf *flags);
+void 				precis_s(t_printf *flags, char **str);
+void 				print_precis_s(t_printf *flags, char **str);
 void 				get_s(t_printf *flags, va_list *ap);
 
 /*
@@ -76,6 +78,7 @@ char				*conv_base(unsigned int nbr, unsigned int base, int letter);
 char				*conv_base_uns(size_t nbr, int base, char letter);
 void 				init_flags(t_printf *flags);
 void 				clear_flags(t_printf *flags);
+char				*strdup_printf(const char *s);
 
 /*
 ** print.c

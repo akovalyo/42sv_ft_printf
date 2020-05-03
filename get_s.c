@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 10:29:44 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/02 12:07:49 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/03 13:33:51 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,40 +47,46 @@ void zero_minus_s(t_printf *flags, char *str)
     }
 }
 
-void print_precis_s(t_printf *flags)
+void precis_s(t_printf *flags, char **str)
+{
+    (*str)[flags->precis_val] = '\0';
+    flags->width_val -= flags->precis_val;
+    flags->print_precis = 1;
+}
+
+void print_precis_s(t_printf *flags, char **str)
 {
     while (flags->precis_val > 0)
-        {
-            putchar_count(flags, ' ');
-            flags->precis_val--;
-        }
+    {
+        putchar_count(flags, ' ');
+        flags->precis_val--;
+        flags->print_precis = 1;
+    }
+    ft_strdel(str);
 }
 
 void get_s(t_printf *flags, va_list *ap)
 {
     char *str;
 
-    str = va_arg(*ap, char *);
+    str = strdup_printf(va_arg(*ap, char *));
     flags->s_len = ft_strlen(str);
     if (flags->precis)
     {
         if (flags->precis_minus && flags->precis_val > 0)
         {
-            while (flags->precis_val > 0)
-            {
-                flags->width_val -= flags->precis_val;
-                flags->print_precis = 1;
-                return ;
-            }
+            print_precis_s(flags, &str);
+            return ;
         }
         else if (flags->s_len > flags->precis_val)
-            print_precis_s(flags);
+            precis_s(flags, &str);
     }
-    if (flags->width)
+    if (flags->width && !flags->minus)
         width_s(flags, str);
     else if (flags->zero || flags->minus)
         zero_minus_s(flags, str);
-    else
+    else if (!flags->stop)
         putstr_count(flags, str);
+    ft_strdel(&str);
     clear_flags(flags);
 }
