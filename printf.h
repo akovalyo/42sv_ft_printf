@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/04 11:02:47 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/04 12:32:10 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct		s_printf
 	unsigned int	precis_minus : 1;
 	unsigned int	s_len;
 	unsigned int	print_precis : 1;
-	unsigned int	stop : 1;
 	unsigned int	dig_minus : 1;
 }					t_printf;
 
@@ -77,8 +76,6 @@ void    			asterisk_precis(t_printf *flags, va_list *ap);
 ** helpers.c
 */
 
-void				putchar_count(t_printf *flags, char c);
-void				putstr_count(t_printf *flags, char *str);
 int					hex_ascii(size_t n, int letter);
 char				*conv_base(unsigned int nbr, unsigned int base, int letter);
 char				*conv_base_uns(size_t nbr, int base, char letter);
@@ -91,6 +88,9 @@ char				*strdup_printf(const char *s);
 */
 void 				print_precis_di(t_printf *flags);
 void 				print_width(t_printf *flags, char fill);
+void				putchar_count(t_printf *flags, char c);
+void				putstr_count(t_printf *flags, char *str);
+void				putstr_di_count(t_printf *flags, char *str);
 
 /*
 ** checker.c

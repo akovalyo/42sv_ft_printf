@@ -6,34 +6,11 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:36:45 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/04 08:53:03 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/04 12:31:50 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-void	putchar_count(t_printf *flags, char ch)
-{
-	ft_putchar(ch);
-	flags->count++;
-}
-
-void	putstr_count(t_printf *flags, char *str)
-{
-	int i;
-
-	i = 0;
-	if (str)
-	{
-		while (str[i])
-		{
-			putchar_count(flags, str[i]);
-			i++;
-		}
-	}
-	
-}
-
 
 int		hex_ascii(size_t n, int letter)
 {
@@ -94,7 +71,6 @@ void init_flags(t_printf *flags)
 	flags->precis_minus = 0;
 	flags->s_len = 0;
 	flags->print_precis = 0;
-	flags->stop = 0;
 	flags->dig_minus = 0;
 }
 
@@ -110,6 +86,5 @@ void clear_flags(t_printf *flags)
 	flags->precis_minus = 0;
 	flags->s_len = 0;
 	flags->print_precis = 0;
-	flags->stop = 0;
 	flags->dig_minus = 0;
 }

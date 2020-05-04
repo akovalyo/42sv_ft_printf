@@ -6,7 +6,7 @@
 #    By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/01 21:26:34 by akovalyo          #+#    #+#              #
-#    Updated: 2020/05/04 10:45:09 by akovalyo         ###   ########.fr        #
+#    Updated: 2020/05/04 11:07:30 by akovalyo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC=ft_printf.c \
 		get_di.c \
 		checker.c \
 		analyse.c \
-		helpers.c
+		helpers.c \
+		print.c
 
 OF = $(SRC:%.c=%.o)
 

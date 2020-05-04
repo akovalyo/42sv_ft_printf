@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 10:29:44 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/04 11:01:36 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/04 11:23:13 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void get_s(t_printf *flags, va_list *ap)
         width_s(flags, str);
     else if (flags->zero || flags->minus)
         zero_minus_s(flags, str);
-    else if (!flags->stop)
+    else
         putstr_count(flags, str);
     ft_strdel(&str);
     clear_flags(flags);
