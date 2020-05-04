@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:36:45 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/03 16:39:41 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/04 08:53:03 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void init_flags(t_printf *flags)
 	flags->s_len = 0;
 	flags->print_precis = 0;
 	flags->stop = 0;
+	flags->dig_minus = 0;
 }
 
 void clear_flags(t_printf *flags)
@@ -110,4 +111,5 @@ void clear_flags(t_printf *flags)
 	flags->s_len = 0;
 	flags->print_precis = 0;
 	flags->stop = 0;
+	flags->dig_minus = 0;
 }

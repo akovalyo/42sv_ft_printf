@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 09:30:57 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/02 10:30:24 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/04 09:09:01 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,6 @@ void    get_c(t_printf *flags, va_list *ap)
         putchar_count(flags, ch);
     clear_flags(flags);
 }
-
-void    get_di(t_printf *flags, va_list *ap)
-{
-    
-}
-
 
 void    get_px(t_printf *flags, va_list *ap)
 {

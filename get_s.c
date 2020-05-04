@@ -6,20 +6,11 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 10:29:44 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/03 17:02:40 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/04 11:01:36 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-void print_width(t_printf *flags, char fill)
-{
-    while (flags->width_val > 0)
-        {
-            putchar_count(flags, fill);
-            flags->width_val--;
-        }
-}
 
 void width_s(t_printf *flags, char *str)
 {

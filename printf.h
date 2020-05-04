@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/03 13:33:37 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/04 11:02:47 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct		s_printf
 	unsigned int	s_len;
 	unsigned int	print_precis : 1;
 	unsigned int	stop : 1;
+	unsigned int	dig_minus : 1;
 }					t_printf;
 
 typedef void		conv(t_printf *flags, va_list *ap);
@@ -45,16 +46,21 @@ void    			get_c(t_printf *flags, va_list *ap);
 void 				print_minus_c(t_printf *flags, char ch);
 void 				print_c(t_printf *flags, char ch, char fill);
 int 				precis_c(t_printf *flags, char ch);
-void    			get_di(t_printf *flags, va_list *ap);
 void    			get_s(t_printf *flags, va_list *ap);
 void    			get_px(t_printf *flags, va_list *ap);
 
-void 				print_width(t_printf *flags, char fill);
 void 				width_s(t_printf *flags, char *str);
 void 				zero_minus_s(t_printf *flags, char *str);
 void 				precis_s(t_printf *flags, char **str);
 void 				print_precis_s(t_printf *flags, char **str);
 void 				get_s(t_printf *flags, va_list *ap);
+
+void    			get_di(t_printf *flags, va_list *ap);
+void 				zero_di(t_printf *flags, char *str);
+void 				minus_di(t_printf *flags, char *str);
+void 				width_di(t_printf *flags, char *str);
+int 				precis_di(t_printf *flags, char *str);
+
 
 /*
 ** analyse.c
@@ -83,8 +89,8 @@ char				*strdup_printf(const char *s);
 /*
 ** print.c
 */
-
-
+void 				print_precis_di(t_printf *flags);
+void 				print_width(t_printf *flags, char fill);
 
 /*
 ** checker.c

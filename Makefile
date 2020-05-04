@@ -6,7 +6,7 @@
 #    By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/01 21:26:34 by akovalyo          #+#    #+#              #
-#    Updated: 2020/05/02 12:05:09 by akovalyo         ###   ########.fr        #
+#    Updated: 2020/05/04 10:45:09 by akovalyo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ FLAGS=-Wall -Wextra -Werror -c
 SRC=ft_printf.c \
 		get_c.c \
 		get_s.c \
+		get_di.c \
 		checker.c \
 		analyse.c \
 		helpers.c
