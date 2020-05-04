@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 10:29:44 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/03 13:33:51 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/03 17:02:40 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void get_s(t_printf *flags, va_list *ap)
         else if (flags->s_len > flags->precis_val)
             precis_s(flags, &str);
     }
-    if (flags->width && !flags->minus)
+    if (flags->width && !flags->minus && !flags->zero)
         width_s(flags, str);
     else if (flags->zero || flags->minus)
         zero_minus_s(flags, str);
