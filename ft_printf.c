@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 10:40:44 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/04 12:29:55 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 08:58:59 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int 	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	t_printf	flags;
-	conv	*fn_array[] = {get_di, get_di, get_di, get_s, get_c, get_px, get_px, get_px, get_c};
+	conv	*fn_array[] = {get_di, get_di, get_u, get_s, get_c, get_px, get_px, get_px, get_c};
 	
 	init_flags(&flags);
 	va_start(ap, format);
@@ -42,7 +42,7 @@ int 	ft_printf(const char *format, ...)
 	return(flags.count);
 }
 
-/* int main()
+int main()
 {
 	int i = 0;
 	int d = 0;
@@ -56,4 +56,3 @@ int 	ft_printf(const char *format, ...)
 	printf("%i - %i\n", i, d);
 	return (0);
 }
- */

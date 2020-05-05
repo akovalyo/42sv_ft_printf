@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/04 12:32:10 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 09:37:24 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,12 @@ void 				print_precis_s(t_printf *flags, char **str);
 void 				get_s(t_printf *flags, va_list *ap);
 
 void    			get_di(t_printf *flags, va_list *ap);
-void 				zero_di(t_printf *flags, char *str);
-void 				minus_di(t_printf *flags, char *str);
-void 				width_di(t_printf *flags, char *str);
-int 				precis_di(t_printf *flags, char *str);
+void 				zero_diu(t_printf *flags, char *str);
+void 				minus_diu(t_printf *flags, char *str);
+void 				width_diu(t_printf *flags, char *str);
+int 				precis_diu(t_printf *flags, char *str);
+
+void    			get_u(t_printf *flags, va_list *ap);
 
 
 /*
@@ -86,11 +88,11 @@ char				*strdup_printf(const char *s);
 /*
 ** print.c
 */
-void 				print_precis_di(t_printf *flags);
+void 				print_precis_diu(t_printf *flags);
 void 				print_width(t_printf *flags, char fill);
 void				putchar_count(t_printf *flags, char c);
 void				putstr_count(t_printf *flags, char *str);
-void				putstr_di_count(t_printf *flags, char *str);
+void				putstr_diu_count(t_printf *flags, char *str);
 
 /*
 ** checker.c

@@ -6,7 +6,7 @@
 #    By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/01 21:26:34 by akovalyo          #+#    #+#              #
-#    Updated: 2020/05/04 11:07:30 by akovalyo         ###   ########.fr        #
+#    Updated: 2020/05/05 08:58:22 by akovalyo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC=ft_printf.c \
 		get_c.c \
 		get_s.c \
 		get_di.c \
+		get_u.c \
 		checker.c \
 		analyse.c \
 		helpers.c \

@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 11:01:09 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/04 12:31:45 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 09:37:34 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void print_width(t_printf *flags, char fill)
         }
 }
 
-void print_precis_di(t_printf *flags)
+void print_precis_diu(t_printf *flags)
 {
     while (flags->precis_val > 0)
         {
@@ -51,7 +51,7 @@ void	putstr_count(t_printf *flags, char *str)
 	}
 }
 
-void	putstr_di_count(t_printf *flags, char *str)
+void	putstr_diu_count(t_printf *flags, char *str)
 {
 	int i;
 
