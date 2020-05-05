@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 10:40:44 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 10:31:24 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 11:03:45 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int 	ft_printf(const char *format, ...)
 	char ch;
 	char c = 'c';
 	char *str;
-	i = ft_printf("%-5.0d\n", 0);
-	d = printf("%-5.0d\n", 0);
+	i = ft_printf("%9.2p\n", 1234);
+	d = printf("%9.2p\n", 1234);
 	printf("%i - %i\n", i, d);
 	return (0);
 }
