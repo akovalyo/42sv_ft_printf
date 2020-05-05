@@ -46,12 +46,12 @@ fclean: clean
 re: fclean all
 
 test:
-	@gcc -g -o test $(SRC) -L ./libft -lft -I ./libft/includes
+	@gcc -g -o test main.c $(SRC) -L ./libft -lft -I ./libft/includes
 	@./test
 	@rm test
 	
 memory:
-	@gcc -g -o test $(SRC) -L ./libft -lft -I ./libft/includes
+	@gcc -g -o test main.c $(SRC) -L ./libft -lft -I ./libft/includes
 	@valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./test
 	@rm test
 

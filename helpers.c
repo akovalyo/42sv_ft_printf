@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:36:45 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 15:04:28 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 16:26:56 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*conv_base(unsigned int nbr, unsigned int base, int letter)
 	if (nbr >= base)
 		str = conv_base(nbr / base, base, letter);
 	ch = hex_ascii(nbr % base, letter);
-	return (ft_straddchr(str, ch));
+	return (ft_straddchr_free(str, ch));
 }
 
 char	*conv_base_uns(size_t nbr, int base, char letter)
@@ -43,7 +43,7 @@ char	*conv_base_uns(size_t nbr, int base, char letter)
 	if (nbr >= (size_t)base)
 		str = conv_base_uns(nbr / base, base, letter);
 	ch = hex_ascii(nbr % base, letter);
-	return (ft_straddchr(str, ch));
+	return (ft_straddchr_free(str, ch));
 }
 
 char	*strdup_printf(const char *s)

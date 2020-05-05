@@ -6,12 +6,11 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 10:40:44 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 13:29:33 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 16:23:00 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include <stdio.h>
 
 void	init_flags(t_printf *flags)
 {
@@ -74,20 +73,3 @@ int		ft_printf(const char *format, ...)
 	va_end(ap);
 	return (flags.count);
 }
-
-/* int main()
-{
-	int i = 0;
-	int d = 0;
-	int num = 29;
-	long ln = 12344;
-	char ch;
-	char c = 'c';
-	char *str;
-	i = ft_printf("%x\n", 1234);
-	d = printf("%X\n", 1234);
-	printf("%i - %i\n", i, d);
-	return (0);
-}
-
- */
