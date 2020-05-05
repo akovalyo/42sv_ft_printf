@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_u.c                                            :+:      :+:    :+:   */
+/*   get_x.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/05 08:57:32 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 14:54:24 by akovalyo         ###   ########.fr       */
+/*   Created: 2020/05/05 12:16:43 by akovalyo          #+#    #+#             */
+/*   Updated: 2020/05/05 15:01:37 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	get_u(t_printf *flags, va_list *ap)
+void	get_x(t_printf *flags, va_list *ap)
 {
 	char *str;
 
-	str = ft_itoa_uns(va_arg(*ap, unsigned int));
+	if (flags->sp == 7)
+		str = conv_base_uns(va_arg(*ap, int), 16, 1);
+	else
+		str = conv_base_uns(va_arg(*ap, int), 16, 0);
 	flags->s_len = ft_strlen(str);
-	if (flags->precis && precis_diu(flags, str))
+	if (flags->precis && precis_px(flags, str))
 		return ;
 	if (flags->width && !flags->minus && !flags->zero)
-		width_diu(flags, str);
+		width_px(flags, str);
 	else if (flags->zero && !flags->minus)
-		zero_diu(flags, str);
+		zero_px(flags, str);
 	else if (flags->minus)
-		minus_diu(flags, str);
+		minus_px(flags, str);
 	else
 	{
 		if (flags->print_precis)

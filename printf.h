@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 10:44:24 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 13:26:36 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,36 +46,37 @@ void				print_minus_c(t_printf *flags, char ch);
 void				print_c(t_printf *flags, char ch, char fill);
 int					precis_c(t_printf *flags, char ch);
 void				get_s(t_printf *flags, va_list *ap);
-
 void				get_s(t_printf *flags, va_list *ap);
 void				width_s(t_printf *flags, char *str);
 void				zero_minus_s(t_printf *flags, char *str);
 void				precis_s(t_printf *flags, char **str);
 void				print_precis_s(t_printf *flags, char **str);
-
-
 void				get_di(t_printf *flags, va_list *ap);
 void				zero_diu(t_printf *flags, char *str);
 void				minus_diu(t_printf *flags, char *str);
 void				width_diu(t_printf *flags, char *str);
 int					precis_diu(t_printf *flags, char *str);
-
 void				get_u(t_printf *flags, va_list *ap);
-
 void				get_p(t_printf *flags, va_list *ap);
-int					precis_p(t_printf *flags, char *str);
-void				width_p(t_printf *flags, char *str);
-void				zero_p(t_printf *flags, char *str);
-void				minus_p(t_printf *flags, char *str);
+int					precis_px(t_printf *flags, char *str);
+void				width_px(t_printf *flags, char *str);
+void				zero_px(t_printf *flags, char *str);
+void				minus_px(t_printf *flags, char *str);
+void				get_x(t_printf *flags, va_list *ap);
 
 /*
 ** analyse.c
 */
 
 void				analyse_flags(t_printf *flags, const char *str);
-void				analyse_asterisk(t_printf *flags, const char *str, va_list *ap);
 void				analyse_precis(t_printf *flags, const char *str);
 void				analyse_width(t_printf *flags, const char *str);
+
+/*
+** asterisk.c
+*/
+
+void				analyse_asterisk(t_printf *flags, const char *str, va_list *ap);
 void				asterisk_width(t_printf *flags, va_list *ap);
 void				asterisk_precis(t_printf *flags, va_list *ap);
 
@@ -86,13 +87,12 @@ void				asterisk_precis(t_printf *flags, va_list *ap);
 int					hex_ascii(size_t n, int letter);
 char				*conv_base(unsigned int nbr, unsigned int base, int letter);
 char				*conv_base_uns(size_t nbr, int base, char letter);
-void				init_flags(t_printf *flags);
-void				clear_flags(t_printf *flags);
 char				*strdup_printf(const char *s);
 
 /*
 ** print.c
 */
+
 void				print_precis_diu(t_printf *flags);
 void				print_width(t_printf *flags, char fill);
 void				putchar_count(t_printf *flags, char c);
@@ -111,6 +111,7 @@ int					specifier_checker(t_printf *flags, const char *str);
 */
 
 int					ft_printf(const char *format, ...);
-
+void				init_flags(t_printf *flags);
+void				clear_flags(t_printf *flags);
 
 #endif

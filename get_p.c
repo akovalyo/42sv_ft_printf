@@ -6,17 +6,18 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 09:55:15 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 10:59:23 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 14:51:51 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int precis_p(t_printf *flags, char *str)
+int		precis_px(t_printf *flags, char *str)
 {
 	if (flags->precis_minus && flags->precis_val > 0)
 	{
-		putstr_count(flags, "0x");
+		if (flags->sp == 5)
+			putstr_count(flags, "0x");
 		putstr_diu_count(flags, str);
 		while (flags->precis_val > flags->s_len)
 		{
@@ -27,14 +28,16 @@ int precis_p(t_printf *flags, char *str)
 	}
 	else if (flags->s_len < flags->precis_val)
 	{
-		flags->precis_val = flags->precis_val - flags->s_len + 2;
+		flags->precis_val = flags->precis_val - flags->s_len;
+		if (flags->sp == 5)
+			flags->precis_val += 2;
 		flags->width_val = flags->width_val - flags->s_len - flags->precis_val;
-		flags->print_precis  = 1; 
+		flags->print_precis = 1;
 	}
 	return (0);
 }
 
-void width_p(t_printf *flags, char *str)
+void	width_px(t_printf *flags, char *str)
 {
 	if (!flags->print_precis)
 		flags->width_val -= flags->s_len;
@@ -42,13 +45,14 @@ void width_p(t_printf *flags, char *str)
 				&& !flags->print_precis)
 		flags->width_val++;
 	print_width(flags, ' ');
-	putstr_count(flags, "0x");
+	if (flags->sp == 5)
+		putstr_count(flags, "0x");
 	if (flags->print_precis)
 		print_precis_diu(flags);
 	putstr_diu_count(flags, str);
 }
 
-void zero_p(t_printf *flags, char *str)
+void	zero_px(t_printf *flags, char *str)
 {
 	if (!flags->print_precis)
 		flags->width_val -= flags->s_len;
@@ -58,46 +62,49 @@ void zero_p(t_printf *flags, char *str)
 	if (flags->precis)
 	{
 		print_width(flags, ' ');
-		putstr_count(flags, "0x");
+		if (flags->sp == 5)
+			putstr_count(flags, "0x");
 		if (flags->print_precis)
 			print_precis_diu(flags);
 	}
 	else
 	{
-		putstr_count(flags, "0x");
+		if (flags->sp == 5)
+			putstr_count(flags, "0x");
 		print_width(flags, '0');
 	}
 	putstr_diu_count(flags, str);
 }
 
-void minus_p(t_printf *flags, char *str)
+void	minus_px(t_printf *flags, char *str)
 {
 	if (!flags->print_precis)
 		flags->width_val -= flags->s_len;
 	if (flags->precis && flags->precis_val == 0 && str[0] == '0'
 				&& !flags->print_precis)
 		flags->width_val++;
-	putstr_count(flags, "0x");
+	if (flags->sp == 5)
+		putstr_count(flags, "0x");
 	if (flags->print_precis)
 		print_precis_diu(flags);
 	putstr_diu_count(flags, str);
 	print_width(flags, ' ');
 }
 
-void get_p(t_printf *flags, va_list *ap)
+void	get_p(t_printf *flags, va_list *ap)
 {
 	char *str;
 
 	str = conv_base_uns(va_arg(*ap, size_t), 16, 0);
 	flags->s_len = ft_strlen(str) + 2;
-	if (flags->precis && precis_p(flags, str))
+	if (flags->precis && precis_px(flags, str))
 		return ;
 	if (flags->width && !flags->minus && !flags->zero)
-		width_p(flags, str);
+		width_px(flags, str);
 	else if (flags->zero && !flags->minus)
-		zero_p(flags, str);
+		zero_px(flags, str);
 	else if (flags->minus)
-		minus_p(flags, str);
+		minus_px(flags, str);
 	else
 	{
 		putstr_count(flags, "0x");

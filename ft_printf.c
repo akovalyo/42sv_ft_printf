@@ -6,19 +6,53 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 10:40:44 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 11:03:45 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 13:29:33 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include <stdio.h>
 
-int 	ft_printf(const char *format, ...)
+void	init_flags(t_printf *flags)
 {
-	va_list	ap;
-	t_printf	flags;
-	conv	*fn_array[] = {get_di, get_di, get_u, get_s, get_c, get_p, get_p, get_p, get_c};
-	
+	flags->specif = "diuscpxX%";
+	flags->sp = 10;
+	flags->i = 0;
+	flags->count = 0;
+	flags->zero = 0;
+	flags->minus = 0;
+	flags->width = 0;
+	flags->width_val = 0;
+	flags->precis = 0;
+	flags->precis_val = 0;
+	flags->precis_minus = 0;
+	flags->s_len = 0;
+	flags->print_precis = 0;
+	flags->dig_minus = 0;
+}
+
+void	clear_flags(t_printf *flags)
+{
+	flags->sp = -1;
+	flags->zero = 0;
+	flags->minus = 0;
+	flags->width = 0;
+	flags->width_val = 0;
+	flags->precis = 0;
+	flags->precis_val = 0;
+	flags->precis_minus = 0;
+	flags->s_len = 0;
+	flags->print_precis = 0;
+	flags->dig_minus = 0;
+}
+
+int		ft_printf(const char *format, ...)
+{
+	va_list			ap;
+	t_printf		flags;
+	static conv		*fn_array[] = {get_di, get_di, get_u, get_s, get_c,
+								get_p, get_x, get_x, get_c};
+
 	init_flags(&flags);
 	va_start(ap, format);
 	while (format[flags.i])
@@ -36,10 +70,9 @@ int 	ft_printf(const char *format, ...)
 				fn_array[flags.sp](&flags, &ap);
 			flags.i++;
 		}
-		
 	}
 	va_end(ap);
-	return(flags.count);
+	return (flags.count);
 }
 
 /* int main()
@@ -51,9 +84,10 @@ int 	ft_printf(const char *format, ...)
 	char ch;
 	char c = 'c';
 	char *str;
-	i = ft_printf("%9.2p\n", 1234);
-	d = printf("%9.2p\n", 1234);
+	i = ft_printf("%x\n", 1234);
+	d = printf("%X\n", 1234);
 	printf("%i - %i\n", i, d);
 	return (0);
 }
+
  */

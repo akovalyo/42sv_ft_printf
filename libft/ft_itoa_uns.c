@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/27 10:54:56 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/04/01 17:09:06 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 15:26:46 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*ft_itoa_uns(size_t nbr)
 {
 	char	*new;
 	int		end;
+
 	end = ft_nbrlen(nbr);
 	new = (char *)malloc(sizeof(char) * end + 1);
 	if (new == NULL)
