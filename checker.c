@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:50:01 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/03 13:15:31 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 09:55:01 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	format_checker(t_printf *flags, const char *str, va_list *ap)
 	while (str[flags->i] && (str[flags->i] == '-' || str[flags->i] == '*' ||
 			(str[flags->i] >= '0' && str[flags->i] <= '9') || str[flags->i] == '.'))
 	{
-		
 		if (str[flags->i] == '-' || (str[flags->i] == '0' && str[flags->i - 1] == '%'))
 			analyse_flags(flags, str);
 		if (str[flags->i] == '*')
@@ -26,8 +25,6 @@ void	format_checker(t_printf *flags, const char *str, va_list *ap)
 			analyse_width(flags, str);
 		if (str[flags->i] == '.')
 			analyse_precis(flags, str);
-
-		
 	}
 }
 

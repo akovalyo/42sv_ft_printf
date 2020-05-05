@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 08:57:32 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 09:37:30 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 10:25:04 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void get_u(t_printf *flags, va_list *ap)
     char *str;
 
     str = ft_itoa_uns(va_arg(*ap, unsigned int));
-    
     flags->s_len = ft_strlen(str);
     if (flags->precis && precis_diu(flags, str))
         return ;
@@ -34,5 +33,5 @@ void get_u(t_printf *flags, va_list *ap)
         putstr_diu_count(flags, str);
     }
     ft_strdel(&str);
-    clear_flags(flags);    
+    clear_flags(flags);
 }

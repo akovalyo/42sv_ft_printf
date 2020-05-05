@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 09:37:24 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 10:30:59 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct		s_printf
 	unsigned int	precis : 1;
 	int				precis_val;
 	unsigned int	precis_minus : 1;
-	unsigned int	s_len;
+	int				s_len;
 	unsigned int	print_precis : 1;
 	unsigned int	dig_minus : 1;
 }					t_printf;
@@ -46,7 +46,6 @@ void 				print_minus_c(t_printf *flags, char ch);
 void 				print_c(t_printf *flags, char ch, char fill);
 int 				precis_c(t_printf *flags, char ch);
 void    			get_s(t_printf *flags, va_list *ap);
-void    			get_px(t_printf *flags, va_list *ap);
 
 void 				width_s(t_printf *flags, char *str);
 void 				zero_minus_s(t_printf *flags, char *str);
@@ -62,6 +61,11 @@ int 				precis_diu(t_printf *flags, char *str);
 
 void    			get_u(t_printf *flags, va_list *ap);
 
+void    			get_p(t_printf *flags, va_list *ap);
+int 				precis_p(t_printf *flags, char *str);
+void 				width_p(t_printf *flags, char *str);
+void 				zero_p(t_printf *flags, char *str);
+void 				minus_p(t_printf *flags, char *str);
 
 /*
 ** analyse.c
