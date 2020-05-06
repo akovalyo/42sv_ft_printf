@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 13:26:36 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 17:17:00 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,10 @@ void				asterisk_precis(t_printf *flags, va_list *ap);
 
 int					hex_ascii(size_t n, int letter);
 char				*conv_base(unsigned int nbr, unsigned int base, int letter);
-char				*conv_base_uns(size_t nbr, int base, char letter);
 char				*strdup_printf(const char *s);
+void				init_flags(t_printf *flags);
+void				clear_flags(t_printf *flags);
+
 
 /*
 ** print.c
@@ -111,7 +113,5 @@ int					specifier_checker(t_printf *flags, const char *str);
 */
 
 int					ft_printf(const char *format, ...);
-void				init_flags(t_printf *flags);
-void				clear_flags(t_printf *flags);
 
 #endif

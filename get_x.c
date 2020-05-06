@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 12:16:43 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 15:01:37 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 17:13:52 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	get_x(t_printf *flags, va_list *ap)
 	char *str;
 
 	if (flags->sp == 7)
-		str = conv_base_uns(va_arg(*ap, int), 16, 1);
+		str = conv_base(va_arg(*ap, int), 16, 1);
 	else
-		str = conv_base_uns(va_arg(*ap, int), 16, 0);
+		str = conv_base(va_arg(*ap, int), 16, 0);
 	flags->s_len = ft_strlen(str);
 	if (flags->precis && precis_px(flags, str))
 		return ;

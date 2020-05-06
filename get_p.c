@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 09:55:15 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 14:51:51 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 17:18:54 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	get_p(t_printf *flags, va_list *ap)
 {
 	char *str;
 
-	str = conv_base_uns(va_arg(*ap, size_t), 16, 0);
+	str = conv_base(va_arg(*ap, size_t), 16, 0);
 	flags->s_len = ft_strlen(str) + 2;
 	if (flags->precis && precis_px(flags, str))
 		return ;

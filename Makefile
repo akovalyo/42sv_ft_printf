@@ -6,7 +6,7 @@
 #    By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/01 21:26:34 by akovalyo          #+#    #+#              #
-#    Updated: 2020/05/05 12:39:15 by akovalyo         ###   ########.fr        #
+#    Updated: 2020/05/05 16:42:13 by akovalyo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ memory:
 	@rm test
 
 debug:
-	@gcc -g -o test $(SRC) -L ./libft -lft -I ./libft/includes
+	@gcc -g -o test main.c $(SRC) -L ./libft -lft -I ./libft/includes
 
 norm:
 	@norminette -R CheckForbiddenSourceHeader $(SRC) libft.h
