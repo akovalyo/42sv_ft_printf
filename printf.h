@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 18:25:34 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 22:42:03 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void				get_c(t_printf *flags, va_list *ap);
 void				print_minus_c(t_printf *flags, char ch);
 void				print_c(t_printf *flags, char ch, char fill);
 int					precis_c(t_printf *flags, char ch);
-void				get_s(t_printf *flags, va_list *ap);
 void				get_s(t_printf *flags, va_list *ap);
 void				width_s(t_printf *flags, char *str);
 void				zero_minus_s(t_printf *flags, char *str);
