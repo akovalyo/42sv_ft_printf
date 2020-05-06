@@ -6,7 +6,7 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/23 09:50:41 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 17:17:00 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:25:34 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct		s_printf
 {
 	const char		*specif;
-	unsigned int 	sp : 4;
+	unsigned int	sp : 4;
 	unsigned int	i;
 	unsigned int	count;
 	unsigned int	zero : 1;
@@ -35,7 +35,7 @@ typedef struct		s_printf
 	unsigned int	dig_minus : 1;
 }					t_printf;
 
-typedef void		conv(t_printf *flags, va_list *ap);
+typedef void		t_conv(t_printf *flags, va_list *ap);
 
 /*
 ** get
@@ -76,7 +76,8 @@ void				analyse_width(t_printf *flags, const char *str);
 ** asterisk.c
 */
 
-void				analyse_asterisk(t_printf *flags, const char *str, va_list *ap);
+void				analyse_asterisk(t_printf *flags, const char *str,
+									va_list *ap);
 void				asterisk_width(t_printf *flags, va_list *ap);
 void				asterisk_precis(t_printf *flags, va_list *ap);
 
@@ -86,10 +87,8 @@ void				asterisk_precis(t_printf *flags, va_list *ap);
 
 int					hex_ascii(size_t n, int letter);
 char				*conv_base(unsigned int nbr, unsigned int base, int letter);
+char				*conv_base_uns(size_t nbr, int base, char letter);
 char				*strdup_printf(const char *s);
-void				init_flags(t_printf *flags);
-void				clear_flags(t_printf *flags);
-
 
 /*
 ** print.c
@@ -105,7 +104,8 @@ void				putstr_diu_count(t_printf *flags, char *str);
 ** checker.c
 */
 
-void				format_checker(t_printf *flags, const char *str, va_list *ap);
+void				format_checker(t_printf *flags, const char *str,
+									va_list *ap);
 int					specifier_checker(t_printf *flags, const char *str);
 
 /*
@@ -113,5 +113,7 @@ int					specifier_checker(t_printf *flags, const char *str);
 */
 
 int					ft_printf(const char *format, ...);
+void				init_flags(t_printf *flags);
+void				clear_flags(t_printf *flags);
 
 #endif

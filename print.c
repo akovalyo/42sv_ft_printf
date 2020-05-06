@@ -6,28 +6,28 @@
 /*   By: akovalyo <al.kovalyov@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 11:01:09 by akovalyo          #+#    #+#             */
-/*   Updated: 2020/05/05 09:37:34 by akovalyo         ###   ########.fr       */
+/*   Updated: 2020/05/05 18:19:58 by akovalyo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void print_width(t_printf *flags, char fill)
+void	print_width(t_printf *flags, char fill)
 {
-    while (flags->width_val > 0)
-        {
-            putchar_count(flags, fill);
-            flags->width_val--;
-        }
+	while (flags->width_val > 0)
+	{
+		putchar_count(flags, fill);
+		flags->width_val--;
+	}
 }
 
-void print_precis_diu(t_printf *flags)
+void	print_precis_diu(t_printf *flags)
 {
-    while (flags->precis_val > 0)
-        {
-            putchar_count(flags, '0');
-            flags->precis_val--;
-        }
+	while (flags->precis_val > 0)
+	{
+		putchar_count(flags, '0');
+		flags->precis_val--;
+	}
 }
 
 void	putchar_count(t_printf *flags, char ch)
