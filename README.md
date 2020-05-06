@@ -29,7 +29,7 @@ ___
 
 flags | Description
 --- | ---
-- | Left-justify within the given field width; Right justification is the default
+`-` | Left-justify within the given field width; Right justification is the default
 0 | Left-pads the number with zeroes (0) instead of spaces when padding is specified (see width sub-specifier).
 
 ___
@@ -37,7 +37,7 @@ ___
 width | Description
 --- | ---
 (number) | Minimum number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with blank spaces. The value is not truncated even if the result is larger.
-* | The width is not specified in the format string, but as an additional integer value argument preceding the argument that has to be formatted.
+`*` | The width is not specified in the format string, but as an additional integer value argument preceding the argument that has to be formatted.
 
 ___
 
